@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>404</h1>
+<div id="box">
+    <p>页面在
+        <span id="Os">5</span>
+        s 后跳转
+    </p>
+</div>
+<script>
+    //几秒倒计时
+    var num=3;
+    //设置一个定时器，每一秒执行一次num自减1，
+    var timer = setInterval(function () {
+        num--;
+        text = num ;
+
+        if( num === 0 ){
+            window.location.href="index.jsp";
+        }
+    },1000)
+</script>
+</body>
+</html>
