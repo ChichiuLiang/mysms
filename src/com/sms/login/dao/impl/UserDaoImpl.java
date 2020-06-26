@@ -12,10 +12,9 @@ import java.sql.SQLException;
 
 public class UserDaoImpl implements UserDao {
     /**
-     * @param cardid
-     * @param password
+     * @param cardid 校园卡
+     * @param password 密码
      * @return {@link UserInfo}
-     * @throws
      * @author chichiu
      * @date 2020/6/11 12:54
      */

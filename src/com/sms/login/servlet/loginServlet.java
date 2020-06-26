@@ -8,8 +8,6 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
-import java.io.PrintWriter;
-
 
 @WebServlet("/login")
 public class loginServlet extends HttpServlet {
@@ -22,10 +20,9 @@ public class loginServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        /**
-         * @param request setCharacterEncoding("utf-8"); //防止接收到前端的中文数据为乱码
-         * @param response setCharacterEncoding("utf-8");//防止前端接收到的中文数据为乱码
-         */
+
+//         * @param request setCharacterEncoding("utf-8"); //防止接收到前端的中文数据为乱码
+//         * @param response setCharacterEncoding("utf-8");//防止前端接收到的中文数据为乱码
         response.setContentType("text/html");
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
@@ -33,15 +30,13 @@ public class loginServlet extends HttpServlet {
         //项目根路径
         String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/";
 
-        //输出到前端页面的一个方法，字符流
-        PrintWriter out = response.getWriter();
+//        //输出到前端页面的一个方法，字符流
+//        PrintWriter out = response.getWriter();
 
 
-        /**
-         * 获取前端的参数
-         * getParameter("username")
-         * getParameter("password")
-         */
+//         * 获取前端的参数
+//         * getParameter("username")
+//         * getParameter("password")
         String cardid = request.getParameter("cardid");
         String password = request.getParameter("password");
 

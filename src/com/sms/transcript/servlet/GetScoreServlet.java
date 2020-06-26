@@ -20,10 +20,9 @@ import java.util.ArrayList;
 @WebServlet("/getscore")
 public class GetScoreServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        /**
-         * @param request setCharacterEncoding("utf-8"); //防止接收到前端的中文数据为乱码
-         * @param response setCharacterEncoding("utf-8");//防止前端接收到的中文数据为乱码
-         */
+
+//      request setCharacterEncoding("utf-8"); //防止接收到前端的中文数据为乱码
+//      response setCharacterEncoding("utf-8");//防止前端接收到的中文数据为乱码
         response.setContentType("text/html");
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
@@ -35,11 +34,12 @@ public class GetScoreServlet extends HttpServlet {
         String saq3 = request.getParameter("saq3");
         System.out.println(choice1 + choice2 + saq1 + saq2 + saq3);
 
-        ArrayList<String> mychoice = new ArrayList<String>();
+        ArrayList<String> mychoice;
+        mychoice = new ArrayList<>();
         mychoice.add(choice1);
         mychoice.add(choice2);
 
-        ArrayList<String> myshort = new ArrayList<String>();
+        ArrayList<String> myshort = new ArrayList<>();
         myshort.add(saq1);
         myshort.add(saq2);
         myshort.add(saq3);
@@ -60,7 +60,4 @@ public class GetScoreServlet extends HttpServlet {
                 response);
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 }

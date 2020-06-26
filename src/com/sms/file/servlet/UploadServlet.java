@@ -53,9 +53,9 @@ public class UploadServlet extends HttpServlet {
         uploadPath = uploadPath + "..\\..\\..\\" + "upload";
 
 
-        File uploadDir = new File(uploadPath);
+//        File uploadDir = new File(uploadPath);
         //如果WEB-INF下面的upload文件夹不存在，则新建一个upload文件夹
-        if (!uploadDir.exists()) uploadDir.mkdir();
+//        if (!uploadDir.exists()) uploadDir.mkdir();
         try {
             //将所有要上传的文件存到文件集合里面
             List<FileItem> formItem = upload.parseRequest(request);

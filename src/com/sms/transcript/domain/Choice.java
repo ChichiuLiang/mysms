@@ -70,11 +70,9 @@ public class Choice {
     public String getChoiceop4() {
         return choiceop4;
     }
-
     public void setChoiceop4(String choiceop4) {
         this.choiceop4 = choiceop4;
     }
-
     public String getChoiceanswer() {
         return choiceanswer;
     }

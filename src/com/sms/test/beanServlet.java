@@ -22,9 +22,9 @@ public class beanServlet extends HttpServlet {
 
         String firstname = "chichiu";
         String lastname = "liang";
-        Integer age = 22;
+        int age = 20;
         StudentsBean stu = new StudentsBean();
-        stu.setAge(20);
+        stu.setAge(age);
         stu.setFirstName(firstname);
         stu.setLastName(lastname);
         System.out.println(stu);

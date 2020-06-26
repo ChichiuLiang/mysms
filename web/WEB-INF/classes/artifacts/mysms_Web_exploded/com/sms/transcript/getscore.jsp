@@ -13,14 +13,14 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/";
 %>
 <%
-    UserInfo loginuser =null;
-    Transcript trans =null;
-    if(session.getAttribute("loginuser") !=null){
+    UserInfo loginuser = null;
+    Transcript trans = null;
+    if (session.getAttribute("loginuser") != null) {
         loginuser = (UserInfo) session.getAttribute("loginuser");
         trans = (Transcript) request.getSession().getAttribute("trans");
-    }else{
-        request.setAttribute("msg","未登录系统，请登录");
-        String url= "jump.jsp";
+    } else {
+        request.setAttribute("msg", "未登录系统，请登录");
+        String url = "jump.jsp";
 //        response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
 //        response.setHeader("Location",url);
         response.sendRedirect(url);
@@ -38,20 +38,24 @@
 <body>
 
 
-
 <div class="backgorund"></div>
 <%--盒子--%>
 <div class="container">
     <%--    左边导航栏--%>
     <div class="leftnav">
-        <div class="title">在线教学网站系统<div class="settings"></div></div>
+        <div class="title">在线教学网站系统
+            <div class="settings"></div>
+        </div>
 
         <div class="userinfo">
             <div class="sculpture clearfix"></div>
-            <% if (loginuser!=null) { %>
-            <div class="username clearfix"> <%=loginuser.getName() %></div>
-            <div class="username clearfix"> <%=loginuser.getCardid() %></div>
-            <% }else{}%>
+            <% if (loginuser != null) { %>
+            <div class="username clearfix"><%=loginuser.getName() %>
+            </div>
+            <div class="username clearfix"><%=loginuser.getCardid() %>
+            </div>
+            <% } else {
+            }%>
         </div>
 
         <ul>
@@ -65,9 +69,10 @@
     <div class="contentbox">
         <div class="logout">退出登录</div>
         <div class="content">
-            <div class="content-header"> </div>
+            <div class="content-header"></div>
             <div class="content-main">
-                <h1>成绩单： <%=trans.getScore()%></h1>
+                <h1>成绩单： <%=trans.getScore()%>
+                </h1>
 
             </div>
         </div>

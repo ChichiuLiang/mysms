@@ -12,9 +12,8 @@ public interface LoginService {
     /**
      * 注册一个用户
      *
-     * @param user
+     * @param user 对象
      * @return {@link boolean}
-     * @throws
      * @author chichiu
      * @date 2020/6/11 12:48
      */
@@ -24,10 +23,9 @@ public interface LoginService {
     /**
      * 检测用户是否存在
      *
-     * @param cardid
-     * @param password
+     * @param cardid 校园卡
+     * @param password 密码
      * @return {@link byte}
-     * @throws
      * @author chichiu
      * @date 2020/6/15 19:35
      */

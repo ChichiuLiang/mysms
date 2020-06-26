@@ -11,24 +11,22 @@ import java.sql.SQLException;
 //import com.mysql.jdbc.Connection; 注意是java.sql.Connection这个包，不然报错
 
 public class ConnectionFactory {
-    public static DataSource ds = null;
+    private static DataSource ds;
 
     // 初始化C3P0数据源
     static {
         // 使用c3p0-config.xml配置文件中的named-config节点中name属性的值
-        ComboPooledDataSource cpds = new ComboPooledDataSource("webappDS");
-        ds = cpds;
+        ds = new ComboPooledDataSource("webappDS");
     }
 
     public static Connection getConnection() throws SQLException {
-        Connection conn = ds.getConnection();
-        return conn;
+        return ds.getConnection();
     }
 
-    //关闭数据源，一般不用调用该方法
-    public static void closeDataSource() throws Exception {
-        ds.getClass().getMethod("close").invoke(ds);
-    }
+//    //关闭数据源，一般不用调用该方法
+//    public static void closeDataSource() throws Exception {
+//        ds.getClass().getMethod("close").invoke(ds);
+//    }
 
     //关闭连接方法
     public static void close(Connection con, PreparedStatement pstm, ResultSet rs) {

@@ -20,7 +20,7 @@
     <title>new jsp</title>
 
 </head>
-<jsp:useBean id="stu"  type="com.sms.test.StudentsBean" scope="session" />
+<jsp:useBean id="stu" type="com.sms.test.StudentsBean" scope="session"/>
 <li>${stu.firstName}</li>
 <li>${stu.age}</li>
 <li>${stu.lastName}</li>
