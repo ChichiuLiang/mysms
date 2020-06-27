@@ -38,26 +38,26 @@ public class TranscriptDaoImpl implements TranscriptDao {
             List<Transcript> List = new ArrayList<>();
             while (rs.next()) {
                 Transcript trans = new Transcript();
-                trans.setChoicenum(rs.getInt("choiceqst_id"));
-                trans.setChoiceanswer(rs.getString("shortqst_answer"));
-                trans.setChoicescore(rs.getInt("choiceqst_score"));
-                trans.setMychoiceanswer(rs.getString("mychoice_answer"));
+                trans.setChoicenum(rs.getInt("choiceqst_num"));
+                trans.setChoiceanswer(rs.getString("shortqst_ans"));
+                trans.setChoicescore(rs.getInt("choiceget_score"));
+                trans.setMychoiceanswer(rs.getString("mychoice_ans"));
 
-                trans.setShortnum(rs.getInt("shortqst_id"));
-                trans.setShortanswer(rs.getString("shortqst_answer"));
-                trans.setShortscore(rs.getInt("shortqst_score"));
-                trans.setMyshortanswer(rs.getString("myshort_answer"));
+                trans.setShortnum(rs.getInt("shortqst_num"));
+                trans.setShortanswer(rs.getString("shortqst_ans"));
+                trans.setShortscore(rs.getInt("shortget_score"));
+                trans.setMyshortanswer(rs.getString("myshort_ans"));
 
                 trans.setScore(rs.getInt("score"));
                 trans.setUsername(rs.getString("username"));
-                trans.setTranscriptid(rs.getInt("transcript_id"));
+                trans.setTranscriptid(rs.getInt("transcriptid"));
                 //将实例添加到 List 里面
                 List.add(trans);
             }
             return List;
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("findAllTrans()有错误");
+            System.out.println("findAllTrans()发生错误");
             return null;
         } finally {
             ConnectionFactory.close(conn, pstm, rs);
@@ -167,8 +167,93 @@ public class TranscriptDaoImpl implements TranscriptDao {
         } else {
             System.out.println("添加成绩单失败！");
         }
-
         return trans;
+    }
+
+
+    //获取某次的成绩单
+
+    /**
+     * @param id 试题号 id
+     * @return {@link Transcript} 返回一个Transcipt 成绩单对象
+     * @author chichiu
+     * @date 2020/6/26 17:07
+     */
+    public Transcript getTransById(Integer id) {
+        System.out.println("transcriptid:!!!!" + id);
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        try {
+            //建立到指定数据库 URL 的连接
+            conn = ConnectionFactory.getConnection();
+            //插入数据库语句
+            String sql = "select * from transcript where transcriptid=?";
+            pstm = conn.prepareStatement(sql);
+
+            pstm.setInt(1, id);
+
+            //执行查询语句
+            rs = pstm.executeQuery();
+
+            //存储在javaBeans中
+            Transcript trans = new Transcript();
+            while (rs.next()) {
+                //实例化一个Transcipt对象作为存储对象
+
+                trans.setChoicenum(rs.getInt("choiceqst_num"));
+                trans.setChoiceanswer(rs.getString("shortqst_ans"));
+                trans.setChoicescore(rs.getInt("choiceget_score"));
+                trans.setMychoiceanswer(rs.getString("mychoice_ans"));
+
+                trans.setShortnum(rs.getInt("shortqst_num"));
+                trans.setShortanswer(rs.getString("shortqst_ans"));
+                trans.setShortscore(rs.getInt("shortget_score"));
+                trans.setMyshortanswer(rs.getString("myshort_ans"));
+
+                trans.setScore(rs.getInt("score"));
+                trans.setUsername(rs.getString("username"));
+                trans.setTranscriptid(rs.getInt("transcriptid"));
+
+            }
+            return trans;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("getTransById(Integer id)查询错误！");
+            return null;
+        } finally {
+            ConnectionFactory.close(conn, pstm, rs);
+        }
 
     }
+
+    public List<Integer> findAllTransId() {
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        try {
+            //建立到指定数据库 URL 的连接
+            conn = ConnectionFactory.getConnection();
+            //插入数据库语句
+            String sql = "select transcriptid from transcript";
+            //参数插入数据库
+            pstm = conn.prepareStatement(sql);
+            rs = pstm.executeQuery();
+
+            //定义一个集合
+            List<Integer> List = new ArrayList<>();
+            while (rs.next()) {
+                //将实例添加到 List 里面
+                List.add(rs.getInt("transcriptid"));
+            }
+            return List;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("findAllTransId()发生错误");
+            return null;
+        } finally {
+            ConnectionFactory.close(conn, pstm, rs);
+        }
+    }
+
 }

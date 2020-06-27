@@ -27,4 +27,12 @@ public class TranscriptServiceImpl implements TransciptService {
     public Transcript getScore(Transcript trans, List<String> mychoice, List<String> myshort) {
         return dao.getScore(trans, mychoice, myshort);
     }
+
+    public Transcript getTransById(Integer id) {
+        return dao.getTransById(id);
+    }
+
+    public List<Integer> findAllTransId() {
+        return dao.findAllTransId();
+    }
 }

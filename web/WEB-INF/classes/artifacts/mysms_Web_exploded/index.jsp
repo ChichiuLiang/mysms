@@ -57,7 +57,41 @@
         }
     }
 
-    $("#vertify").click(function () {
+    <%--$("#vertify").click(function () {--%>
+    <%--    //单击登录按钮的时候触发ajax事件--%>
+    <%--    if (isInt($("input[name=cardid]").val())) {--%>
+    <%--        $.ajax({--%>
+    <%--            url: "<%=basePath%>ajax",--%>
+    <%--            type: "post",--%>
+    <%--            data: {--%>
+    <%--                cardid: $("input[name=cardid]").val(),--%>
+    <%--                password: $("input[name=password]").val()--%>
+    <%--            },--%>
+    <%--            dataType: "json",--%>
+    <%--            success: function (result) {--%>
+    <%--                var flag = result.flag;--%>
+    <%--                // alert(flag);--%>
+    <%--                if (flag == 0) {--%>
+    <%--                    //如果登录成功则跳转到成功页面--%>
+    <%--                    $("#PError").text("用户不存在");--%>
+    <%--                    &lt;%&ndash;window.location.href="<%=basePath%>/pages/front/success.jsp";&ndash;%&gt;--%>
+    <%--                } else if (flag == 2) {--%>
+    <%--                    //跳回到Index.jsp登录页面，同时在登录页面给用户一个友好的提示--%>
+    <%--                    $("#PError").text("验证成功");--%>
+    <%--                } else {--%>
+    <%--                    $("#PError").text("密码不正确");--%>
+    <%--                }--%>
+
+    <%--            }--%>
+
+    <%--        });--%>
+
+    <%--    } else {--%>
+    <%--        $("#PError").text("校园卡格式错误，请输入纯数字");--%>
+    <%--    }--%>
+
+    <%--});--%>
+    $("#login").click(function () {
         //单击登录按钮的时候触发ajax事件
         if (isInt($("input[name=cardid]").val())) {
             $.ajax({
@@ -74,44 +108,10 @@
                     if (flag == 0) {
                         //如果登录成功则跳转到成功页面
                         $("#PError").text("用户不存在");
-                        <%--window.location.href="<%=basePath%>/pages/front/success.jsp";--%>
-                    } else if (flag == 2) {
-                        //跳回到Index.jsp登录页面，同时在登录页面给用户一个友好的提示
-                        $("#PError").text("验证成功");
-                    } else {
-                        $("#PError").text("密码不正确");
-                    }
-
-                }
-
-            });
-
-        } else {
-            $("#PError").text("校园卡格式错误，请输入纯数字");
-        }
-
-    });
-    $("#login").click(function () {
-        //单击登录按钮的时候触发ajax事件
-        if (isInt($("input[name=cardid]").val())) {
-            $.ajax({
-                url: "<%=basePath%>ajax",
-                type: "post",
-                data: {
-                    cardid: $("input[name=cardid]").val(),
-                    password: $("input[name=password]").val()
-                },
-                dataType: "json",
-                success: function (result) {
-                    var flag = result.flag;
-                    // alert(flag);
-                    if (flag === 0) {
-                        //如果登录成功则跳转到成功页面
-                        $("#PError").text("用户不存在");
                         alert("用户不存在");
-                    } else if (flag === 3) {
+                    } else if (flag == 3) {
                         $("#PError").text("校园卡格式错误，请输入纯数字");
-                    } else if (flag === 2) {
+                    } else if (flag == 2) {
                         $("#PError").text("验证成功");
                         $("#form").submit();
                     } else {

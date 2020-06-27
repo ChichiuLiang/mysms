@@ -16,4 +16,8 @@ public interface TransciptService {
     boolean addTrans(Transcript trans);
 
     Transcript getScore(Transcript trans, List<String> mychoice, List<String> myshort);
+
+    Transcript getTransById(Integer id);
+
+    List<Integer> findAllTransId();
 }

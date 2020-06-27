@@ -5,7 +5,7 @@
   Time: 11:24
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -35,8 +35,10 @@
 
 </head>
 <body>
+<%--背景--%>
 <div class="backgorund"></div>
-<%--盒子--%>
+
+<%--盒子 start--%>
 <div class="container">
     <%--    左边导航栏--%>
     <div class="leftnav">
@@ -46,14 +48,16 @@
 
         <div class="userinfo">
             <div class="sculpture clearfix"></div>
-            <% if (loginuser != null) {%>
+            <% if (loginuser != null) { %>
             <div class="username clearfix"><%=loginuser.getName() %>
             </div>
             <div class="username clearfix"><%=loginuser.getCardid() %>
             </div>
             <% } else {
+
             }%>
         </div>
+
         <ul>
             <li><a href="<%=basePath%>showqstlist">测试题目</a></li>
             <li><a href="<%=basePath%>com/sms/file/upload.jsp">上传文件</a></li>
@@ -123,7 +127,7 @@
         </div>
     </div>
 </div>
-<%--盒子--%>
+<%--盒子 end --%>
 
 
 </body>
@@ -141,8 +145,6 @@
             "' onblur='updateInputValue(" + strname + ")' name='" + strname + "' id='" + strname + "' >" + value + "</textarea>"));
         //利用修改后的值重新拼接一个input
     }
-
-
     $("#submitans").click(function () {
         //单击登录按钮的时候触发ajax事件
         $("#form").submit();
@@ -168,15 +170,11 @@
         <%--            }else{--%>
         <%--                $("#PError").text("密码不正确");--%>
         <%--            }--%>
-
         <%--        }--%>
-
         <%--    });--%>
-
         <%--}else{--%>
         <%--    $("#PError").text("校园卡格式错误，请输入纯数字");--%>
         <%--}--%>
-
     });
 </script>
 </html>

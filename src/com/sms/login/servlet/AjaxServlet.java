@@ -12,6 +12,8 @@ import java.io.PrintWriter;
 
 //import javax.servlet.ServletException;
 
+//import javax.servlet.ServletException;
+
 /**
  * @author Chichiu
  * @date 2020/6/12 21:36
@@ -25,6 +27,7 @@ public class AjaxServlet extends HttpServlet {
 
         //输出到前端页面的一个方法，字符流
         PrintWriter out = response.getWriter();
+
         //获取jsp页面传递过来的参数信息
         String cardid = request.getParameter("cardid");
         String password = request.getParameter("password");
@@ -43,4 +46,8 @@ public class AjaxServlet extends HttpServlet {
 //        String info=gson.toJson(user);
     }
 
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        this.doPost(request, response);
+    }
 }

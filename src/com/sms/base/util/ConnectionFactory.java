@@ -16,7 +16,8 @@ public class ConnectionFactory {
     // 初始化C3P0数据源
     static {
         // 使用c3p0-config.xml配置文件中的named-config节点中name属性的值
-        ds = new ComboPooledDataSource("webappDS");
+        ComboPooledDataSource cpds = new ComboPooledDataSource("webappDS");
+        ds = cpds;
     }
 
     public static Connection getConnection() throws SQLException {

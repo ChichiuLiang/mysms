@@ -21,9 +21,6 @@ public class UserRegisterServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
 
-        //项目根路径
-        String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/";
-
         /*获取register.jsp页面提交的账号和密码*/
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -39,12 +36,12 @@ public class UserRegisterServlet extends HttpServlet {
         if (login.addUser(user)) {
             System.out.println("即将跳回到登录页面");
             request.setAttribute("msg", "注册用户成功");
-            request.setAttribute("url", basePath + "index.jsp");
-            request.getRequestDispatcher(basePath + "jump.jsp").forward(request, response);
+            request.setAttribute("url", "/index.jsp");
+            request.getRequestDispatcher("/jump.jsp").forward(request, response);
         } else {
             request.setAttribute("msg", "注册用户失败");
-            request.setAttribute("url", basePath + "com/sms/login/register.jsp");
-            request.getRequestDispatcher(basePath + "jump.jsp").forward(request, response);
+            request.setAttribute("url", "/com/sms/login/register.jsp");
+            request.getRequestDispatcher("/jump.jsp").forward(request, response);
         }
     }
 

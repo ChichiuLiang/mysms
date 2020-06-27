@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -19,6 +20,7 @@ import java.util.ArrayList;
  */
 @WebServlet("/getscore")
 public class GetScoreServlet extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 //      request setCharacterEncoding("utf-8"); //防止接收到前端的中文数据为乱码
@@ -26,6 +28,16 @@ public class GetScoreServlet extends HttpServlet {
         response.setContentType("text/html");
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
+//登录验证
+        HttpSession session;
+        session = request.getSession();
+        //若用户没有登录则返回登录页面
+        if (session == null || session.getAttribute("loginuser") == null) {
+            request.setAttribute("msg", "未登录系统。请先登录");
+            request.setAttribute("url", "/index.jsp");
+            request.getRequestDispatcher("/jump.jsp").forward(request, response);
+            return;
+        }
 
         String choice1 = request.getParameter("choice1");
         String choice2 = request.getParameter("choice2");
@@ -55,7 +67,10 @@ public class GetScoreServlet extends HttpServlet {
         trans = service.getScore(trans, mychoice, myshort);
 
         //返回一个trans对象，用来查询成绩
-        request.getSession().setAttribute("trans", trans);
+        synchronized (request.getSession()) {
+            request.getSession().setAttribute("trans", trans);
+        }
+
         request.getRequestDispatcher("/com/sms/transcript/getscore.jsp").forward(request,
                 response);
     }
