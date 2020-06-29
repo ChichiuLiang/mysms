@@ -5,7 +5,7 @@
   Time: 20:10
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"  isELIgnored="false" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.sms.login.domain.UserInfo" %>
 <%
@@ -72,9 +72,9 @@
             <div class="content-header"></div>
             <div class="content-main">
                 <jsp:useBean id="trans" type="com.sms.transcript.domain.Transcript"
-                             scope="session" />
+                             scope="session"/>
                 <h1>成绩单：</h1>
-<%--                <li>试题号： ${trans.transcriptid}</li>--%>
+                <%--                <li>试题号： ${trans.transcriptid}</li>--%>
                 <li>考生名： ${trans.username}</li>
                 <li>总分： ${trans.score}</li>
                 <li>我的选择题答案： ${trans.mychoiceanswer}</li>
@@ -84,17 +84,17 @@
                 <li>简答题参考答案： ${trans.shortanswer}</li>
                 <li>简答题分数： ${trans.shortscore}</li>
 
-<%--                 transcriptid;--%>
-<%--                 score;--%>
-<%--                 username;--%>
-<%--                 mychoiceanswer;--%>
-<%--                myshortanswer;--%>
-<%--                shortanswer;--%>
-<%--                choiceanswer;--%>
-<%--                choicenum;--%>
-<%--                shortnum;--%>
-<%--                shortscore;--%>
-<%--                choicescore;--%>
+                <%--                 transcriptid;--%>
+                <%--                 score;--%>
+                <%--                 username;--%>
+                <%--                 mychoiceanswer;--%>
+                <%--                myshortanswer;--%>
+                <%--                shortanswer;--%>
+                <%--                choiceanswer;--%>
+                <%--                choicenum;--%>
+                <%--                shortnum;--%>
+                <%--                shortscore;--%>
+                <%--                choicescore;--%>
             </div>
         </div>
     </div>

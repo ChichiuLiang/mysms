@@ -5,7 +5,7 @@
   Time: 17:29
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page  contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
          isELIgnored="false" %>
 <%
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/";
@@ -77,30 +77,38 @@
 
                 <form action="<%=basePath%>queryTrans" method="post">
 
-                    <select name="transcript_id" >
+                    <select name="transcript_id">
                         <c:forEach items="${transidlist}" var="list" varStatus="stat">
-                        <option value ="${list}">${list}</option>
+                            <option value="${list}">${list}</option>
                         </c:forEach>
                     </select>
 
                     <input type="submit" value="查询" id="">
                 </form>
                 <%
-                    if(request.getAttribute("trans")!=null) {
+                    if (request.getAttribute("trans") != null) {
                         Transcript trans = (Transcript) request.getAttribute("trans");
 
 
                 %>
                 <h1>成绩单：</h1>
                 <%--                <li>试题号： ${trans.transcriptid}</li>--%>
-                <li>考生名：<%=trans.getUsername()%></li>
-                <li>总分： <%=trans.getScore()%></li>
-                <li>我的选择题答案： <%=trans.getMychoiceanswer()%></li>
-                <li>选择题参考答案： <%=trans.getChoiceanswer()%></li>
-                <li>选择题分数： <%=trans.getChoicescore()%></li>
-                <li>我的简答题答案： <%=trans.getMyshortanswer()%></li>
-                <li>简答题参考答案： <%=trans.getShortanswer()%></li>
-                <li>简答题分数： <%=trans.getShortscore()%></li>
+                <li>考生名：<%=trans.getUsername()%>
+                </li>
+                <li>总分： <%=trans.getScore()%>
+                </li>
+                <li>我的选择题答案： <%=trans.getMychoiceanswer()%>
+                </li>
+                <li>选择题参考答案： <%=trans.getChoiceanswer()%>
+                </li>
+                <li>选择题分数： <%=trans.getChoicescore()%>
+                </li>
+                <li>我的简答题答案： <%=trans.getMyshortanswer()%>
+                </li>
+                <li>简答题参考答案： <%=trans.getShortanswer()%>
+                </li>
+                <li>简答题分数： <%=trans.getShortscore()%>
+                </li>
 
                 <%--                 transcriptid;--%>
                 <%--                 score;--%>
