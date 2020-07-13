@@ -31,7 +31,7 @@
         <input type="password" name="password" id="password" placeholder="密码">
         <span id="PError"></span>
         <input type="button" id="register" value="注册">
-        <a href="../../../index.jsp">登录</a>
+        <a href="../index.jsp">登录</a>
         <%--            <input type="button" id="vertify" class="" value="检验">--%>
         <%--            <input type="reset" class="" value="重置">--%>
     </form>

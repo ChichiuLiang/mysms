@@ -17,23 +17,18 @@
 //
 //    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        response.setContentType("text/html;charset=utf-8");
-//        request.setCharacterEncoding("utf-8");
-//        response.setCharacterEncoding("utf-8");
+////获取前端传递的参数
 //
-//        String firstname = "chichiu";
-//        String lastname = "liang";
-//        int age = 20;
-//        StudentsBean stu = new StudentsBean();
-//        stu.setAge(age);
-//        stu.setFirstName(firstname);
-//        stu.setLastName(lastname);
-//        System.out.println(stu);
-//        System.out.println(stu.getFirstName());
-//        HttpSession session = request.getSession();
-//        synchronized (session) {
-//            session.setAttribute("stu", stu);
-//        }
 //
-//        request.getRequestDispatcher("/com/sms/test/test.jsp").forward(request, response);
+//        String stunum ="20170390105";
+//        String name = "卢毅豪";
+//        String score = "100";
+//
+//        //存储数据
+//        Score scorebean=new Score(Integer.parseInt(score),name,stunum);
+//
+//        request.setAttribute("scorebean",scorebean);
+//        request.getRequestDispatcher("showscore.jsp").forward(request,
+//                response);
 //    }
 //}

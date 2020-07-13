@@ -54,6 +54,7 @@
             <li><a href="<%=basePath%>showqstlist">测试题目</a></li>
             <li><a href="<%=basePath%>com/sms/file/upload.jsp">上传文件</a></li>
             <li><a href="<%=basePath%>filelist">下载文件</a></li>
+            <li><a href="<%=basePath%>com/sms/transcript/querytrans.jsp">成绩查询</a></li>
         </ul>
         <% } else {
         }%>
